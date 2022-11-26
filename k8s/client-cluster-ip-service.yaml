@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-cluster-ip-service
+spec:
+  type: ClusterIP
+  selector:
+    component: web
+  ports:
+    # how other pods will communicate/access to this prot
+    - port: 3000
+    # port on this port 
+      targetPort: 3000    

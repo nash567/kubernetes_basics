@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: postgres
+  template:
+    metadata:
+      labels: 
+        component: postgres
+    spec:
+    # reach out to kubernetes and get the storage defiend by persistent volume claim
+      volumes:
+        - name: postgres-storage
+          persistentVolumeClaim:
+            claimName: persistent-volume-claim
+      containers:
+        - name: postgres
+          image: postgres
+          ports:
+            - containerPort: 5432  
+            # get the persistent volume and get used by this container
+          volumeMounts:
+            # same as volumes above
+            - name: postgres-storage
+            # anything our container stores at this path will be stored insde our persistent volume
+              mountPath: /var/lib/postgresql/data  
+            # inside the persistent volume our data will be stored inside a folder called postgres  
+              subPath: postgres
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom: 
+                secretKeyRef:
+                  name: pgpassword
+                  key: PGPASSWORD

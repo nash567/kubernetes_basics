@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: persistent-volume-claim
+spec:
+# Access Modes are of 2 types
+#   - ReadWriteOnce ---> can be used by a single Node at a time
+#   - ReadOnlyMAny  ---> many nodes can read at a time
+#   - ReadWriteMant ---> many nodes can read and write at a time
+# kubernetes will find a storage instance with this accessMOde and that size storage
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+    # space of 2gega byte 
+      storage: 2Gi
+
+

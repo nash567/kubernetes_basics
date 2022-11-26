@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+# deploy ment name
+  name: client-deployment
+spec:
+# no of pods to run
+  replicas: 3
+# used to select pods  
+  selector:
+    matchLabels:
+     component: web 
+# data about containers inside pods     
+  template:
+    metadata:
+      labels: 
+        component: web
+    spec:
+      containers: 
+        - name: client
+          image: bipen2001/client_image
+          ports:
+            - containerPort: 3000  
