@@ -7,7 +7,7 @@ docker push bipen2001/multi-server:latest
 docker push bipen2001/multi-server:$SHA
 docker push bipen2001/multi-worker:latest
 docker push bipen2001/multi-worker:$SHA
-kubectl apply -f k8s
+kubectl apply -f ./k8s
 kubectl set image deployments/server-deployment server=bipen/multi-server:$SHA
 kubectl set image deployments/client-deployment server=bipen/multi-client:$SHA
 kubectl set image deployments/worker-deployment server=bipen/multi-worker:$SHA
