@@ -22,6 +22,7 @@ jobs:
         gcloud config set project kubernetes-basics-369813
         gcloud config set compute/zone asia-east1-a
         gcloud container clusters get-credentials muti-cluster
+        
     - name: setup docker 
       run : |
         echo "${{secrets.DOCKER_PASSWORD}}" | docker login -u "${{secrets.DOCKER_USERNAME}}" --password-stdin
