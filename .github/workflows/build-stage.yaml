@@ -14,7 +14,7 @@ jobs:
       uses: actions/checkout@v3
     - name: setup gcloud
       run: | 
-        echo "$SHA"
+        echo "the current commit sha is $SHA"
         gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.GPG_PASSPHRASE }}" --output service-account.json service-account.json.gpg
         curl https://sdk.cloud.google.com | bash > /dev/null;
         source $HOME/google-cloud-sdk/path.bash.inc
