@@ -13,7 +13,7 @@ function App() {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Fib calculator version kubernetes</h1>
          
-          <Link to="/">Home</Link>
+          <Link to="/">Home DIR</Link>
           <Link to="/otherpage">Other Page</Link>
         </header>
         <div>
