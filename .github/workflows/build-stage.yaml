@@ -13,7 +13,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - name: setup gcloud
-    - run: | 
+      run: | 
         openssl aes-256-cbc -K $encrypted_9f3b5599b056_key -iv $encrypted_9f3b5599b056_iv -in service-account.json.enc -out service-account.json -d
         curl https://sdk.cloud.google.com | bash > /dev/null;
         source $HOME/google-cloud-sdk/path.bash.inc
@@ -23,11 +23,11 @@ jobs:
         gcloud config set compute/zone asia-east1-a
         gcloud container clusters get-credentials muti-cluster
     - name: setup docker 
-    - run : |
+      run : |
         echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
         docker build -t bipen2001/react-test -f ./client/Dockerfile.dev ./client
     - name: run react docker test
-    - run : |
+      run : |
         docker build -t bipen2001/react-test -f ./client/Dockerfile.dev ./client    
 
     - name: deploy
