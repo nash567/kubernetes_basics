@@ -1,4 +1,5 @@
-echo "${{secrets.DOCKER_PASSWORD}}" | docker login -u "${{secrets.DOCKER_USERNAME}}" --password-stdin
+echo "hi my password and username is $DOCKER_USERNAME and pswd is $DOCKER_PASSWORD"
+echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 docker build -t bipen2001/multi-client:latest -t bipen2001/multi-client:$SHA -f ./client/Dockerfile ./client
 docker build -t bipen2001/multi-server:latest -t bipen2001/multi-server:$SHA -f ./server/Dockerfile ./server
 docker build -t bipen2001/multi-worker:latest -t bipen2001/multi-worker:$SHA -f ./worker/Dockerfile ./worker

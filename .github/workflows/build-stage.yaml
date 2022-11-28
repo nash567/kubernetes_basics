@@ -8,6 +8,8 @@ on:
 env:
   CLOUDSDK_CORE_DISABLE_PROMPTS: 1   
   SHA: ${{github.sha}} 
+  DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+  DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
 jobs:
   build:
     name: react test
